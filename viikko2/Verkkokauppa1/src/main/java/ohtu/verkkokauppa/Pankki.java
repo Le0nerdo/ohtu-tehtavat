@@ -1,11 +1,12 @@
 package ohtu.verkkokauppa;
 
-public class Pankki implements Bank {
-    private Tracker kirjanpito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-    public Pankki(Tracker tracker) {
-        kirjanpito = tracker;
-    }
+@Component
+public class Pankki implements Bank {
+    @Autowired
+    private Tracker kirjanpito;
 
     public boolean tilisiirto(String nimi, int viitenumero, String tililta, String tilille, int summa) {
         kirjanpito.lisaaTapahtuma("tilisiirto: tililtä " + tilille + " tilille " + tilille
